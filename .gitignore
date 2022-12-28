@@ -1,3 +1,11 @@
+st/st
+dwm/dwm
+dmenu/dmenu
+dmenu/stest
+surf/surf
+
+*.diff
+
 # Prerequisites
 *.d
 
