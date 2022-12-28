@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/nikoci/suckless/main/dmenu/dmenu.png">
+<img src="https://raw.githubusercontent.com/nikoci/suckless/main/dmenu/dmenu.png" height="60px">
 
 <p>
 
