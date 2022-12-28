@@ -1,40 +1,45 @@
-surf - simple webkit-based browser
-==================================
-surf is a simple Web browser based on WebKit/GTK+.
+<img src="https://raw.githubusercontent.com/nikoci/suckless/main/surf/surf.png">
 
-Requirements
-------------
-In order to build surf you need GTK+ and Webkit/GTK+ header files.
+<p>
 
-In order to use the functionality of the url-bar, also install dmenu[0].
+	surf - simple webkit-based browser
+	==================================
+	surf is a simple Web browser based on WebKit/GTK+.
 
-Installation
-------------
-Edit config.mk to match your local setup (surf is installed into
-the /usr/local namespace by default).
+	Requirements
+	------------
+	In order to build surf you need GTK+ and Webkit/GTK+ header files.
 
-Afterwards enter the following command to build and install surf (if
-necessary as root):
+	In order to use the functionality of the url-bar, also install dmenu[0].
 
-    make clean install
+	Installation
+	------------
+	Edit config.mk to match your local setup (surf is installed into
+	the /usr/local namespace by default).
 
-Running surf
-------------
-run
-	surf [URI]
+	Afterwards enter the following command to build and install surf (if
+	necessary as root):
 
-See the manpage for further options.
+	    make clean install
 
-Running surf in tabbed
-----------------------
-For running surf in tabbed[1] there is a script included in the distribution,
-which is run like this:
+	Running surf
+	------------
+	run
+		surf [URI]
 
-	surf-open.sh [URI]
+	See the manpage for further options.
 
-Further invocations of the script will run surf with the specified URI in this
-instance of tabbed.
+	Running surf in tabbed
+	----------------------
+	For running surf in tabbed[1] there is a script included in the distribution,
+	which is run like this:
 
-[0] http://tools.suckless.org/dmenu
-[1] http://tools.suckless.org/tabbed
+		surf-open.sh [URI]
 
+	Further invocations of the script will run surf with the specified URI in this
+	instance of tabbed.
+
+	[0] http://tools.suckless.org/dmenu
+	[1] http://tools.suckless.org/tabbed
+
+</p>
