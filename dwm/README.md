@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/nikoci/dwm/main/dwm.png">
+<img src="https://raw.githubusercontent.com/nikoci/suckless/main/dwm/dwm.png" height="60px">
 
 <p>
 
