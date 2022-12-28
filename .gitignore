@@ -5,6 +5,8 @@ dmenu/stest
 surf/surf
 
 *.diff
+*.orig
+*.rej
 
 # Prerequisites
 *.d
