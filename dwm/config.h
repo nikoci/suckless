@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 20;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -17,11 +17,16 @@ static const char col_highlight[]   = "#c68c51";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
-	[SchemeSel]  = { col_gray4, col_highlight, col_gray1 },
+	[SchemeSel]  = { col_gray4, col_highlight,  col_gray1  },
+	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_gray4, col_highlight,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_gray4, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
-static const char *tags[] = { " ", " ", "  ", " ﮸ ", " " };
+static const char *tags[] = { " ", "  ", "  ", " ﮸ ", "  " };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -30,7 +35,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       1,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 8,       1,           -1 },
 };
 
 /* layout(s) */
@@ -116,4 +121,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
