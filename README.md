@@ -17,4 +17,4 @@
 
 </p>
 
-<img src="">
+<img src="https://github.com/nikoci/suckless/blob/main/screenshot.png?raw=true">
