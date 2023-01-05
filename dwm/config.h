@@ -79,8 +79,9 @@ static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+  { ControlMask|ShiftMask,        XK_p,  spawn,              SHCMD("./home/nikoci/.scripts/screenshot.sh -s /home/nikoci/Pictures/screenshots/")},
+  { ControlMask|ShiftMask,        XK_o,  spawn,              SHCMD("./home/nikoci/.scripts/screenshot.sh /home/nikoci/Pictures/screenshots/")},
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
