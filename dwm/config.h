@@ -1,40 +1,36 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 5;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int barvpadpx = 2;
 static const unsigned int barhpadpx = 20;
 static const unsigned int gappx     = 20;        /* gaps between windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 20;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=14" };
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=14";
-static const char col_gray1[]       = "#121214";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_highlight[]   = "#CB6A39"; //orange
-static const char col_highlight2[]  = "#2D2F35"; //gray
-static const char col_highlight3[]  = "#E2C8BC"; //light orange
-static const char col_highlight4[]  = "#14b6fc"; //baby blue
-static const char col_highlight5[]  = "#b1e4f9"; //light baby blue
-static const char col_delight[]     = "#161719";
+static const char bg_1_col[]		= "#09090a";
+static const char bg_2_col[]		= "#121218";
+static const char fg_1_col[]		= "#eeeeee";
+static const char fg_2_col[]		= "#d6d6d6";
+static const char hl_1_col[]		= "#e2ddbf";
+static const char hl_2_col[]		= "#60877d";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_delight },
-	[SchemeSel]  = { col_gray4, col_highlight4,  col_delight  },
-	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_highlight4, col_gray1, "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm]  = { col_highlight5, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_highlight5, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm]  = { col_highlight5, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeNorm] = { fg_1_col, bg_1_col, bg_1_col},
+	[SchemeSel]  = { fg_1_col, hl_2_col,  bg_1_col  },
+	[SchemeStatus]  = { fg_1_col, bg_1_col,  bg_1_col  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { hl_2_col, bg_1_col, bg_1_col  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { fg_1_col, bg_1_col,  bg_1_col  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { fg_1_col, bg_1_col,  bg_1_col  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { fg_1_col, bg_1_col,  bg_1_col  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "﮸", "" };
+static const char *tags[] = { "", "ﰩ", "", "הּ" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -46,7 +42,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -71,7 +67,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", bg_1_col, "-nf", fg_1_col, "-sb", bg_1_col, "-sf", hl_2_col, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
@@ -82,18 +78,17 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_e,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+  { MODKEY,                       XK_w,      spawn,          SHCMD("firefox &") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
